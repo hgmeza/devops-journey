@@ -12,3 +12,9 @@ Some types:
 - `ClusterIp`: Service is only accessible only from inside the cluster, and not externally, like a browser. This is useful when you want to connect microservices so you can have a private network.
 
 - `NodePort`: You expose a port through the node. You can choose ports greater than 30,000. Mostly used for development purposes.
+
+## Replica Set
+
+You dont usually deploy pods, but instead replica sets so than when a pod goes down, it can replicate that pod and get that pod up and running.
+
+It's just like `AutoScaling` group policies you select on AWS. You select how many pods you want to have running at any one time.
