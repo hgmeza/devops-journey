@@ -6,4 +6,4 @@ Data given from developers:
 - `queue` microservice is accessible on port: `8161`
 - `position-simulator` microservice has no access port
 - `position-tracker` microservice is accessible on port: `8080`
-- - REST URI is in the form `/GET /vehicles/{vehicle name}` (note the blank space)
+  - REST URI is in the form `/GET /vehicles/{vehicle name}` (note the blank space)
