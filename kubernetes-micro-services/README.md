@@ -6,6 +6,9 @@ The structured way to follow this repo is as follows:
 2. `replica-sets/`
 3. `deployments/`
 4. `networking/`
+5. `microservices/`
+
+The `microservices` folder contains the main code for this repo, which also includes settings used to deploy to AWS.
 
 ## Pods
 
