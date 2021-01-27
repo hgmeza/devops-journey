@@ -17,7 +17,7 @@ We then see the following happening under the hood:
 
 Pretty cool!
 
-This is how the new `release2` version looks like (before, there was no traking, denoted by the red drawing, of the trucks).
+This is how the new `release2` version looks like (before there was no traking, denoted by the red drawing, of the trucks).
 
 <img src="./screenshots/2.png">
 
@@ -27,12 +27,12 @@ The records of the tracker are stored in memory, inside the app running the cont
 Entering: A database microservice.
 
 ## Release 3
-This allows that the `position-simulator` (tracker), only handles one thing only (remember, microservices is all about the `single responsibility principle) by storing the tracker data into the new mongodb instance.
+This allows that the `position-simulator` (tracker), only handles one thing only (remember, microservices is all about the `single responsibility principle`) by storing the tracker data into the new mongodb instance.
 
 You can confirm data persistance by deleting the position tracker pod:
 - `kubectl delete pod/position-tracker-<rs-id>-<pod-id>`
 
-However, it is now _really_ persistent, due to the fact that if the mongodb instance crashes for any reason, all data will be lost.
+However, it is not _really_ persistent, due to the fact that if the mongodb instance crashes for any reason, all data will be lost.
 
 Entering: `Persistent Volumes`
 
