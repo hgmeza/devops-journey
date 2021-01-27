@@ -20,3 +20,8 @@ Pretty cool!
 This is how the new `release2` version looks like (before, there was no traking, denoted by the red drawing, of the trucks).
 
 <img src="./screenshots/2.png">
+
+## Problems for Release 2
+The records of the tracker are stored in memory, inside the app running the container. Eventually the pod will run out the memory (can take a long time). In a microservice architecture, we have to design so that they are resilient to failure.
+
+Entering: A database microservice.
