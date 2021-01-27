@@ -29,3 +29,31 @@ Entering: A database microservice.
 ## Release 3
 This allows that the `position-simulator` (tracker), only handles one thing only (remember, microservices is all about the `single responsibility principle) by storing the tracker data into the new mongodb instance.
 
+You can confirm data persistance by deleting the position tracker pod:
+- `kubectl delete pod/position-tracker-<rs-id>-<pod-id>`
+
+However, it is now _really_ persistent, due to the fact that if the mongodb instance crashes for any reason, all data will be lost.
+
+Entering: `Persistent Volumes`
+
+## Volumes (for local dev)
+Note that for development/testing locally purposes, the type `hostPath` was chosen, as shown below. This wont be necessary for when deploying to AWS.
+
+```yaml
+spec:
+  containers:
+    - name: queue
+      image: mongo:3.6.5-jessie
+      volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db
+  volumes:
+    - name: mongo-persistent-storage
+      hostPath:
+        path: /mnt/mongo-storage
+        type: DirectoryOrCreate
+```
+
+And now, when we apply, and do `kubectl describe pod/mongodb-<rs-id>-<pod-id>` we see that it succesfully mounted:
+
+<img src="./screenshots/3.png">
