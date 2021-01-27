@@ -25,3 +25,7 @@ This is how the new `release2` version looks like (before, there was no traking,
 The records of the tracker are stored in memory, inside the app running the container. Eventually the pod will run out the memory (can take a long time). In a microservice architecture, we have to design so that they are resilient to failure.
 
 Entering: A database microservice.
+
+## Release 3
+This allows that the `position-simulator` (tracker), only handles one thing only (remember, microservices is all about the `single responsibility principle) by storing the tracker data into the new mongodb instance.
+
