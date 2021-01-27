@@ -7,3 +7,16 @@ Data given from developers:
 - `position-simulator` microservice has no access port
 - `position-tracker` microservice is accessible on port: `8080`
   - REST URI is in the form `/GET /vehicles/{vehicle name}` (note the blank space)
+
+## Deploying A New Release
+You won't see it in the code, but we started on the `workloads` file all the docker images with `release1`. Now, suppose we have a new version, `release2`, and they way to currently do it manually is by editing the file, and then do `kubectl apply -f .`
+
+We then see the following happening under the hood:
+
+<img src="./screenshots/1.png">
+
+Pretty cool!
+
+This is how the new `release2` version looks like (before, there was no traking, denoted by the red drawing, of the trucks).
+
+<img src="./screenshots/2.png">
