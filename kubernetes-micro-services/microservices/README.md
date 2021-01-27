@@ -57,3 +57,15 @@ spec:
 And now, when we apply, and do `kubectl describe pod/mongodb-<rs-id>-<pod-id>` we see that it succesfully mounted:
 
 <img src="./screenshots/3.png">
+
+## Persistent Volume Claims
+It can be a burden to always be changing the type of storage the database will be using for persitance. Instead, we can add a configuration file "claiming" for the configuration.
+
+`storage.yml`:
+- `kind: PersistentVolumeClaim` explains the "what we want"
+- `kind: PersistentVolume` explain how we want it implemented (physical storage)
+- `storageClassName` is how we link/bind both
+
+and we can confirm the new volume mount creation by: `kubectl get pv`:
+
+<img src="./screenshots/4.png">
