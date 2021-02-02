@@ -69,3 +69,41 @@ It can be a burden to always be changing the type of storage the database will b
 and we can confirm the new volume mount creation by: `kubectl get pv`:
 
 <img src="./screenshots/4.png">
+
+## AWS EKS vs Kops
+The main purpose of this project is to learn how to manage kubernetes cluster within the AWS ecosystem. Therefore, EKS was chosen, despite that Kops can also be ran in AWS.
+
+The only _main_ difference, in my opinion, is:
+- EKS manages the `master node` for you, you dont even see it running as a EC2 instance whereas in Kops you have to manage it
+
+## AWS EKS
+### Setting up a Bastion Server
+- AMI: `Amazon Linux 2`
+
+SSH into it to configure.
+
+### Install eksctl
+Do commands:
+```bash
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+```
+- Make sure to have AWS CLI version >= 2
+- Refer to [this](https://eksctl.io/usage/minimum-iam-policies/) to configure IAM Policies
+
+### Install kubeclt
+```bash
+export RELEASE=`<default eks version>`
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v$RELEASE/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
+Verify installation:
+```bash
+kubectl version --client
+```
+
+### Create a Cluster
+```bash
+eksctl create cluster --name <project-name> --nodes-min=3
+```
