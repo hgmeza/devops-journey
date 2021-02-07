@@ -124,3 +124,44 @@ You will see that a new EBS volume and a Load Balancer were created. Access the 
 ### Monitoring
 The usual `kubectl get pods` command does nto give a lot of information on where the pods are deployed. But by doing `kubectl get pods -o wide` it will tell you where they are running. They will point ot the private DNS on AWS.
 
+### ELK Stack
+Elastic Search, Fluentd, and Kibana integration for viewing logging of nodes.
+
+Related files:
+- `elastic-stack.yml`
+- `fluentd-config.yml`
+
+All this configurations come from the official kubernetes github [page](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch).
+
+Apply those files and see the new pods by doing 
+
+```bash
+kubectl get po -n kube-system
+```
+
+Check that everything went well by doing
+```bash
+kubectl describe svc kibana-logging -n kube-system
+```
+Then get the LoadBalancer Ingress, and visit it on port `5601`. You should see the following:
+
+<img src="./screenshots/6.png" />
+
+AWESOME!
+
+To look at the generated logs so far, got to `Discover` tab on the left-side menu, and then you should see something like this:
+
+<img src="./screenshots/7.png" />
+
+Below the graph you can find all the details of those logs. This could be a good place to find application errors.
+
+With Kibana, you can save your log queries, create a visualization, and then create a dashboard. By setting the `queue` service to zero, we can simulate an emergency situation, in which case the graphs could be helpful:
+
+<img src="./screenshots/8.png" />
+
+Set back the queue service and over time you will see the graphs coming to a healthy state:
+
+<img src="./screenshots/9.png" />
+
+all the way to zero.
+
