@@ -89,11 +89,17 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 ```
 - Make sure to have AWS CLI version >= 2
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
 - Refer to [this](https://eksctl.io/usage/minimum-iam-policies/) to configure IAM Policies
 
 ### Install kubeclt
 ```bash
-export RELEASE=`<default eks version>`
+export RELEASE=1.18.0 # must be the default k8s version from aws
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v$RELEASE/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
