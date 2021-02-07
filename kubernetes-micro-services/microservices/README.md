@@ -113,3 +113,14 @@ kubectl version --client
 ```bash
 eksctl create cluster --name <project-name> --nodes-min=3
 ```
+
+### Deploy Cluster
+For simplicity purposes, just create `yml` files on your bastion server, and then do `kubectl apply -f .`
+
+You will see that a new EBS volume and a Load Balancer were created. Access the DNS of the load balancer, and you should see the application!
+
+<img src="./screenshots/5.png" />
+
+### Monitoring
+The usual `kubectl get pods` command does nto give a lot of information on where the pods are deployed. But by doing `kubectl get pods -o wide` it will tell you where they are running. They will point ot the private DNS on AWS.
+
