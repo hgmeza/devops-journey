@@ -122,9 +122,9 @@ You will see that a new EBS volume and a Load Balancer were created. Access the 
 <img src="./screenshots/5.png" />
 
 ### Monitoring
-The usual `kubectl get pods` command does nto give a lot of information on where the pods are deployed. But by doing `kubectl get pods -o wide` it will tell you where they are running. They will point ot the private DNS on AWS.
+The usual `kubectl get pods` command does not give a lot of information on where the pods are deployed. But by doing `kubectl get pods -o wide` it will tell you where they are running. They will point ot the private DNS on AWS.
 
-### ELK Stack
+## ELK Stack
 Elastic Search, Fluentd, and Kibana integration for viewing logging of nodes.
 
 Related files:
@@ -165,3 +165,58 @@ Set back the queue service and over time you will see the graphs coming to a hea
 
 all the way to zero.
 
+## Monitoring with Prometheus and Grafana
+Using a package manager for k8s with `helm-charts`.
+
+Related files:
+- `crds.yml`
+- `monitoring.yml`
+
+Apply first the `crds.yml` followed by the `monitoring.yml`
+
+to ensure everything went well, do:
+```bash
+kubectl get svc -n monitoring
+```
+
+The UI Prometheus will be the one that has the double prometheus name, `monitoring-kube-prometheus-prometheus`.
+
+<img src="./screenshots/10.png" />
+
+To access Grafana, we can do a little hack by editing the grafana service. This is useful to give access to monitoring to system administrators.
+
+```bash
+kubectl edit svc -n monitoring monitoring-grafana
+```
+and go to the bottom of the file, and change the `type` to `LoadBalancer`.
+
+then do
+```bash
+kubectl get svc -n monitoring
+```
+and grab the loadbalancer DNS. You will see the Grafana login page. Access it with default credentials of 
+- username: `admin`
+- password: `prom-operator`
+
+then you will see the welcome screen: 
+
+<img src="./screenshots/11.png" />
+
+By clicking `Home` on the top, choose `USE Method / Node`. 
+
+The USE method is a concept of monitoring. It does not have to be for kubernetes, but for other types of applications. If you're wondering, the acronyms mean:
+- U: Utilization 
+- S: Saturation 
+- E: Errors
+
+which are essential for monitoring the `health` of the app.
+
+In this dashboard:
+
+<img src="./screenshots/12.png" />
+
+we can only see one node at a time. On the top side, on `instance` you can see the private IP of the node. Because you only see one node at a time, its better if we switch to `USE Method / Cluster`
+
+<img src="./screenshots/13.png" />
+
+Now, this is the dashboard that most likely you will want to have displaying at a work office. It is way easier to spot if something weird is going on.
