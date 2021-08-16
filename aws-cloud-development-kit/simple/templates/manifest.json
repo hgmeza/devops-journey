@@ -1,0 +1,113 @@
+{
+  "version": "13.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "SimpleStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "SimpleStack.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/SimpleStack/MyFirstCDKBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyFirstCDKBucketC899BE56",
+            "trace": [
+              "new Bucket (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:713:22)",
+              "new SimpleStack (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/lib/simple-stack.ts:9:20)",
+              "Object.<anonymous> (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/bin/simple.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/SimpleStack/MyFirstCDKBucketExport": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyFirstCDKBucketExport",
+            "trace": [
+              "new SimpleStack (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/lib/simple-stack.ts:13:5)",
+              "Object.<anonymous> (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/bin/simple.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "internal/main/run_main_module.js:17:47"
+            ]
+          }
+        ],
+        "/SimpleStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:422:26)",
+              "process.emit (events.js:315:20)",
+              "process.EventEmitter.emit (domain.js:486:12)",
+              "process.emit (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ],
+        "/SimpleStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:31:27)",
+              "/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:422:26)",
+              "process.emit (events.js:315:20)",
+              "process.EventEmitter.emit (domain.js:486:12)",
+              "process.emit (/Users/hugomeza/Documents/learning/udemy/devops-journey/aws-cloud-development-kit/simple/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "SimpleStack"
+    }
+  }
+}
