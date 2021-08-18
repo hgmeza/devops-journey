@@ -35,11 +35,6 @@ export class SimpleStack extends cdk.Stack {
       publicReadAccess: true,
     });
 
-    new BucketDeployment(this, "MyFirstWebsiteBucketDeployment", {
-      sources: [Source.asset(path.join(__dirname, "../frontend/build"))],
-      destinationBucket: websiteBucket,
-    });
-
     const cloudfront = new CloudFrontWebDistribution(this, "MyFirstCDN", {
       originConfigs: [
         {
@@ -50,6 +45,13 @@ export class SimpleStack extends cdk.Stack {
         },
       ],
     });
+
+    new BucketDeployment(this, "MyFirstWebsiteBucketDeployment", {
+      sources: [Source.asset(path.join(__dirname, "../frontend/build"))],
+      destinationBucket: websiteBucket,
+      distribution: cloudfront,
+    });
+
     const getPhotos = new lambda.NodejsFunction(this, "MyFirstCDKLambda", {
       runtime: Runtime.NODEJS_14_X,
       entry: path.join(__dirname, "../api/get-photos/index.ts"),
