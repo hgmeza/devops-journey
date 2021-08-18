@@ -71,6 +71,7 @@ expect(stack).toHaveResource("AWS::S3::Bucket");
 
 ## Favorite Commands
 
+- `cdk doc`
 - `cdk diff`
 - `cdk deploy`
 - `cdk synth`
