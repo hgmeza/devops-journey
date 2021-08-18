@@ -33,3 +33,5 @@ Just use `Jest` from `"@aws-cdk/assert/jest"` and write a readable test like
 ```javascript
 expect(stack).toHaveResource("AWS::S3::Bucket");
 ```
+
+<img src="./photos/Bowser.png" />
