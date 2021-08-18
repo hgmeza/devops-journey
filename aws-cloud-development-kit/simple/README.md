@@ -1,14 +1,35 @@
-# Welcome to your CDK TypeScript project!
+# Simple CDK App
 
-This is a blank project for TypeScript development with CDK.
+Documenting learnings using AWS CDK
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Key Takeaway
 
-## Useful commands
+- Always, but _always_ make sure that your cdk related packages have the same version, otherwise unexpected behaviours/bugs will arise.
+- Always, but _always_ make sure that your cdk related packages have the same version, otherwise unexpected behaviours/bugs will arise.
+- When in doubt, just run command
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+```bash
+cdk doc
+```
+
+## Testing
+
+### Method 1
+
+- Create a folder named `templates`
+- run:
+
+```bash
+cdk synthesize --output=./templates
+```
+
+- copy/paste template (Resources and Outputs) into test file
+- remove any Metadata
+
+### Method 2
+
+Just use `Jest` from `"@aws-cdk/assert/jest"` and write a readable test like
+
+```javascript
+expect(stack).toHaveResource("AWS::S3::Bucket");
+```
