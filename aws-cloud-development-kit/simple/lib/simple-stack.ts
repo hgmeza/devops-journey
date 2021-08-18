@@ -7,6 +7,7 @@ import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
 import { PolicyStatement } from "@aws-cdk/aws-iam";
 import { CorsHttpMethod, HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2";
 import { LambdaProxyIntegration } from "@aws-cdk/aws-apigatewayv2-integrations";
+import { CloudFrontWebDistribution } from "@aws-cdk/aws-cloudfront";
 export class SimpleStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -29,6 +30,26 @@ export class SimpleStack extends cdk.Stack {
     bucketPolicy.addResources(`${bucket.bucketArn}/*`);
     bucketPolicy.addActions("s3:GetObject", "s3:PutObject");
 
+    const websiteBucket = new Bucket(this, "MyFirstWebsiteBucket", {
+      websiteIndexDocument: "index.html",
+      publicReadAccess: true,
+    });
+
+    new BucketDeployment(this, "MyFirstWebsiteBucketDeployment", {
+      sources: [Source.asset(path.join(__dirname, "../frontend/build"))],
+      destinationBucket: websiteBucket,
+    });
+
+    const cloudfront = new CloudFrontWebDistribution(this, "MyFirstCDN", {
+      originConfigs: [
+        {
+          s3OriginSource: {
+            s3BucketSource: websiteBucket,
+          },
+          behaviors: [{ isDefaultBehavior: true }],
+        },
+      ],
+    });
     const getPhotos = new lambda.NodejsFunction(this, "MyFirstCDKLambda", {
       runtime: Runtime.NODEJS_14_X,
       entry: path.join(__dirname, "../api/get-photos/index.ts"),
@@ -68,6 +89,16 @@ export class SimpleStack extends cdk.Stack {
     new cdk.CfnOutput(this, "MyFirstCDKApiOutput", {
       value: httpApi.url!,
       exportName: "MyFirstCDKApiEndpoint",
+    });
+
+    new cdk.CfnOutput(this, "MyFirstCDKWebsiteBucketOutput", {
+      value: websiteBucket.bucketName,
+      exportName: "MyFirstCDKWebsiteBucketName",
+    });
+
+    new cdk.CfnOutput(this, "MyFirstCDKCDNOutput", {
+      value: cloudfront.distributionDomainName,
+      exportName: "MyFirstCDKCDNUrl",
     });
   }
 }
